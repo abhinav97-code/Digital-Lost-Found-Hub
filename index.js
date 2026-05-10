@@ -16,6 +16,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+// Ye line browser ko batati hai ki 'public' folder mein static files (photos) hain
+app.use(express.static(path.join(__dirname, 'public')));
 
 // --- MULTER STORAGE ---
 const storage = multer.diskStorage({
