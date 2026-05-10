@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const multer = require('multer'); 
+
 const Item = require('./models/Item');
 
 // --- DATABASE CONNECTION ---
@@ -21,9 +22,13 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => { cb(null, 'public/uploads/'); },
     filename: (req, file, cb) => { cb(null, Date.now() + '-' + file.originalname); }
 });
-const upload = multer({ storage: storage });
+const upload=multer({storage: storage});
 
 // --- ROUTES ---
+// GET route: Isse report wala page (form) khulega
+app.get('/report', (req, res) => {
+    res.render('report'); // 'report' tumhari EJS file ka naam hona chahiye
+});
 
 // 1. Home Page
 app.get('/', async (req, res) => {
@@ -36,8 +41,17 @@ app.get('/', async (req, res) => {
 });
 
 // 2. Report Page
-app.get('/report', (req, res) => {
-    res.render('report');
+// Pehle: app.post('/report', async (req, res) => {
+// Ab aisa hona chahiye:
+
+app.post('/report', upload.single('image'), async (req, res) => { 
+    try {
+        // Tumhara database wala code yahan pehle se hoga...
+        res.render('success'); 
+    } catch (error) {
+        console.error(error); // Taaki terminal mein error dikhe
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 // 3. Add Item (Sahi Brackets ke sath)
