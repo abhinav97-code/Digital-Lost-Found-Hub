@@ -9,8 +9,67 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="/style.css">
     <style>
+    /* Navbar ka background pakka change karne ke liye */
+.navbar {
+    background-color: #e3f2fd !important; /* Ye hai Sky Blue color code */
+    padding: 15px 0 !important;
+    border-bottom: 2px solid #bbdefb !important; /* Halka dark blue border niche */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important; /* Professional shadow */
+}
+
+/* LostFound Hub aur VBSPU ka color dark karne ke liye */
+.navbar-brand {
+    color: #01579b !important; /* Deep Dark Blue color */
+    font-size: 1.5rem !important;
+}
+
+        /* Text ko Dark aur Attractive banane ke liye */
+        .hero-section {
+    background-color: #8def31 !important; /* Isse background wapas white ho jayega */
+    padding: 100px 0; /* Text ke upar aur niche space dene ke liye */
+    margin-top: 0;
+}
+.hero-section h1 {
+    color: #1a1c20 !important; /* Dark solid color */
+    font-weight: 800;
+    font-size: 3.8rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+.hero-section h1 span {
+    color: #FF8C00; /* Orange highlight */
+}
+
+/* Buttons ko professional banane ke liye */
+.btn-custom {
+    padding: 12px 30px;
+    border-radius: 50px; /* Rounded corners */
+    font-weight: 600;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-lost {
+    background: #1a1c20;
+    color: rgb(244, 111, 111);
+    border: 2px solid #1a1c20;
+}
+
+.btn-found {
+    background: #FF8C00;
+    color: white;
+    border: 2px solid #FF8C00;
+}
+
+.btn-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
         :root {
             --primary-orange: #FF8C00;
             --dark-orange: #E67E22;
@@ -25,12 +84,58 @@
         .btn-report:hover { background-color: var(--dark-orange); transform: scale(1.05); color: white; }
 
         /* Hero Section */
-        .hero-section { 
-            background: linear-gradient(135deg, var(--primary-orange) 0%, #FFA500 100%); 
-            color: white; padding: 100px 0; border-radius: 0 0 50px 50px; margin-bottom: 50px; 
-        }
-        .hero-section h1 { font-size: 3.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .hero-section h1 {
+    color: #1a1a1a !important; /* Ekdam solid dark grey/black jo saaf dikhega */
+    font-weight: 800; /* Text ko mota (bold) karega */
+    font-size: 3.5rem; /* Size bada karega */
+    text-align: center;
+    margin-bottom: 20px;
+}
 
+/* Isse "Found Something" orange dikhega aur chamkega */
+.hero-section h1 span {
+    color: #FF8C00; 
+}
+
+         /* --- Professional Form Styling --- */
+.form-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    margin-top: -50px; /* Hero section ke thoda upar overlap karne ke liye */
+    position: relative;
+    z-index: 5;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.2);
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--primary-orange), var(--dark-orange));
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+}
         /* Card Style */
         .item-card { 
             border: none; border-radius: 20px; transition: 0.4s; background: white; overflow: hidden; 
@@ -53,7 +158,7 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="/">
-                <i class="fa-solid fa-magnifying-glass-location me-2"></i>LostFound Hub
+                <i class="fa-solid fa-magnifying-glass-location me-2"></i>LostFound Hub |VBSPU
             </a>
             <div class="ms-auto">
                 <a href="/report" class="btn btn-report shadow-sm">
@@ -64,9 +169,19 @@
     </nav>
 
     <!-- Attractive Hero Section -->
-    <div class="hero-section">
+    <section class="hero-section text-center py-5">
+    <div class="container">
+        <h1 class="display-3 fw-bold">Lost Something? <br> <span style="color: #FF8C00;">Found Something?</span></h1>
+        <p class="lead mb-4 text-secondary">India's most trusted Digital Lost & Found Hub.</p>
+        
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="/report" class="btn btn-dark btn-lg px-5 rounded-pill shadow">Lost Item</a>
+            <a href="/items" class="btn btn-warning btn-lg px-5 rounded-pill shadow text-white" style="background-color: #FF8C00; border: none;">Found Item</a>
+        </div>
+    </div>
+</section>
         <div class="container text-center">
-            <h1 class="fw-bold mb-3">Lost Something? Found Something?</h1>
+            <h1>Lost Something? <br> <span>Found Something?</span></h1>
             <p class="lead mb-4">India's most trusted platform to reconnect people with their belongings.</p>
             <div class="d-flex justify-content-center gap-3">
                 <div class="bg-white text-dark px-4 py-2 rounded-pill shadow-sm"><i class="fa-solid fa-shield-halved text-warning me-2"></i>Secure</div>
